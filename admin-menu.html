@@ -1,1 +1,364 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QR Menu Management Prototype | Palace Istanbul</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#2d1917"><link rel="stylesheet" href="admin.css"><script defer src="admin.js"></script></head><body data-admin="menu"><div id="adminRoot"></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR Menu Panel | Palace Istanbul</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#3B1719">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%233B1719'/%3E%3Cpath d='M24 7l3.4 11.8L39.5 21l-11.7 3.5L30.4 37 24 28.9 17.6 37l2.6-12.5L8.5 21l12.1-2.2L24 7Z' fill='none' stroke='%23D7AA63' stroke-width='1.6'/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;src:url("assets/fonts/source-serif-4-latin-ext-opsz-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Source Serif 4";font-style:italic;font-weight:200 900;font-display:swap;src:url("assets/fonts/source-serif-4-latin-ext-opsz-italic.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("assets/fonts/inter-latin-ext-opsz-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;src:url("assets/fonts/source-serif-4-latin-opsz-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Serif 4";font-style:italic;font-weight:200 900;font-display:swap;src:url("assets/fonts/source-serif-4-latin-opsz-italic.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("assets/fonts/inter-latin-opsz-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{--ink:#241714;--wine:#5b1f25;--wine-2:#3b1719;--gold:#d7aa63;--copper:#b66f45;--cream:#f6efe4;--paper:#fffdf8;--sand:#ece1d1;--muted:#76665d;--line:#e3d7c7;--green:#2f7c55;--red:#a74242;
+  --serif:"Source Serif 4",Georgia,serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:14.5px;line-height:1.45;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--wine)}
+.app{display:grid;grid-template-columns:220px 1fr 430px;min-height:100vh}
+/* sidebar */
+.side{background:var(--wine-2);color:#f1e2cc;padding:20px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 8px 18px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:10px}
+.brand svg{width:30px;height:30px;color:var(--gold);flex:none}
+.brand b{display:block;font-family:var(--serif);font-weight:600;font-size:17px;color:#fff;line-height:1.1}
+.brand small{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.nav button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;color:#e8d6bd;padding:10px 12px;border-radius:10px;font-weight:500}
+.nav button:hover{background:rgba(255,255,255,.06)}
+.nav button.on{background:var(--gold);color:#2c1b16;font-weight:600}
+.nav button span{margin-left:auto;font-size:11px;background:rgba(255,255,255,.14);padding:1px 7px;border-radius:99px}
+.side .back{display:block;margin-top:auto;padding:10px 12px;border-radius:10px;color:#e8d6bd;text-decoration:none;font-size:13px;border:1px solid rgba(255,255,255,.14)}.side .back+.conn{margin-top:8px}
+.side .conn{margin-top:auto;font-size:12px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.06);line-height:1.5}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:#c9a15b}
+.dot.ok{background:#6fbf73}.dot.bad{background:#e07a6a}
+/* main */
+.main{padding:22px 26px 80px;min-width:0}
+.head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:5;background:var(--cream);padding:4px 0 14px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+.head h1{margin:0;font-family:var(--serif);font-weight:600;font-size:26px;margin-right:auto}
+.pill{font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:99px;background:var(--sand);color:#5c463d}
+.pill.dirty{background:#f3dfb4;color:#6b4a14}
+.btn{height:40px;padding:0 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font-weight:600;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.btn:hover{border-color:#cbb9a2}
+.btn.pri{background:var(--wine);border-color:var(--wine);color:#fff}
+.btn.pri:hover{background:#742a32}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#2c1b16}
+.btn.danger{color:var(--red);border-color:#e7c8c3}
+.btn.sm{height:32px;padding:0 10px;font-size:13px;border-radius:8px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:16px}
+.card h2{margin:0 0 4px;font-family:var(--serif);font-weight:600;font-size:20px}
+.card p.help{margin:0 0 14px;color:var(--muted);font-size:13.5px}
+.tool{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.tool select,.tool input{height:40px;border-radius:10px;border:1px solid var(--line);background:var(--paper);padding:0 12px}
+.tool input{flex:1;min-width:180px}
+label.f{display:block;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--muted);margin:12px 0 5px}
+.in{width:100%;height:42px;border-radius:10px;border:1px solid var(--line);background:#fff;padding:0 12px}
+textarea.in{height:auto;min-height:84px;padding:10px 12px;resize:vertical}
+.in:focus,.tool input:focus,.tool select:focus{outline:2px solid var(--gold);outline-offset:0;border-color:var(--gold)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* item list */
+.cathead{display:flex;align-items:baseline;gap:10px;margin:22px 0 6px}
+.cathead h3{margin:0;font-family:var(--serif);font-weight:600;font-size:19px}
+.cathead span{color:var(--muted);font-size:13px}
+.irow{display:grid;grid-template-columns:44px 1fr 96px auto auto;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:8px 10px;margin-top:6px}
+.irow.off{opacity:.55}
+.irow .th{width:44px;height:44px;border-radius:8px;background:var(--sand) center/cover}
+.irow .nm{min-width:0;cursor:pointer}
+.irow .nm b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.irow .nm small{color:var(--muted);font-size:12.5px}
+.price{display:flex;align-items:center;border:1px solid var(--line);border-radius:9px;background:#fff;height:36px;padding:0 8px}
+.price input{width:100%;border:0;outline:0;background:none;font-weight:600;text-align:right}
+.tg{display:flex;gap:6px;align-items:center}
+.sw{position:relative;display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;user-select:none}
+.sw input{position:absolute;opacity:0}
+.sw i{width:34px;height:20px;border-radius:99px;background:#d6c8b6;position:relative;transition:.2s;flex:none}
+.sw i::after{content:"";position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}
+.sw input:checked+i{background:var(--green)}
+.sw input:checked+i::after{transform:translateX(14px)}
+.sw input:focus-visible+i{outline:2px solid var(--gold)}
+.star{width:32px;height:32px;border-radius:8px;border:1px solid var(--line);background:#fff;color:#c9b8a2;font-size:16px}
+.star.on{background:var(--gold);border-color:var(--gold);color:#2c1b16}
+.mv{display:flex;flex-direction:column}
+.mv button{width:26px;height:17px;border:1px solid var(--line);background:#fff;font-size:10px;line-height:1;padding:0}
+.mv button:first-child{border-radius:6px 6px 0 0}.mv button:last-child{border-radius:0 0 6px 6px;border-top:0}
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(30,15,12,.45);z-index:30;opacity:0;pointer-events:none;transition:.25s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;right:0;top:0;bottom:0;width:min(520px,100vw);background:var(--paper);z-index:31;transform:translateX(105%);transition:transform .35s cubic-bezier(.2,.75,.1,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.18)}
+.drawer.on{transform:none}
+.drawer .dh{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.drawer .dh h2{margin:0;font-family:var(--serif);font-weight:600;font-size:21px;margin-right:auto}
+.drawer .db{padding:4px 18px 18px;overflow:auto;flex:1}
+.drawer .df{padding:14px 18px;border-top:1px solid var(--line);display:flex;gap:10px}
+.photo{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center}
+.photo .pv{width:120px;height:90px;border-radius:10px;background:var(--sand) center/cover;display:grid;place-items:center;color:var(--muted);font-size:12px}
+.chipsel{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chipsel button{height:30px;padding:0 10px;border-radius:99px;border:1px solid var(--line);background:#fff;font-size:12.5px}
+.chipsel button.on{background:var(--wine);border-color:var(--wine);color:#fff}
+/* tables */
+.crow{display:grid;grid-template-columns:1fr 1fr 1.4fr auto auto auto;gap:8px;align-items:center;margin-top:8px}
+.crow .in{height:38px}
+.hist{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.hist b{font-weight:600}.hist small{color:var(--muted)}
+.hist .btn{margin-left:auto}
+/* preview */
+.pvw{background:#e9dfd0;border-left:1px solid var(--line);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;padding:18px}
+.pvw .ph{width:375px;flex:1;max-height:800px;border-radius:38px;border:10px solid #1b1210;background:#1b1210;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
+.pvw iframe{width:100%;height:100%;border:0;border-radius:28px;background:#fff}
+.pvw .cap{font-size:12px;color:var(--muted);margin:0 0 10px;text-align:center}
+.mob-only{display:none}
+/* toast + modal */
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:12px 16px;border-radius:12px;font-weight:500;z-index:60;opacity:0;transition:.3s;max-width:92vw}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast.err{background:var(--red)}
+.modal{position:fixed;inset:0;z-index:50;display:none;place-items:center;background:rgba(30,15,12,.5);padding:20px}
+.modal.on{display:grid}
+.modal .box{background:var(--paper);border-radius:16px;padding:22px;max-width:440px;width:100%}
+.modal h3{margin:0 0 8px;font-family:var(--serif);font-weight:600;font-size:21px}
+.modal p{margin:0 0 18px;color:#55433b}
+.modal .acts{display:flex;justify-content:flex-end;gap:10px}
+.note{background:#fff6e4;border:1px solid #ecd7ac;border-radius:12px;padding:12px 14px;font-size:13.5px;color:#5c463d;margin-top:14px}
+code{background:var(--sand);padding:1px 5px;border-radius:5px;font-size:12.5px}
+ol.steps{padding-left:20px;margin:6px 0;color:#55433b}ol.steps li{margin:4px 0}
+@media (max-width:1280px){.app{grid-template-columns:200px 1fr}.pvw{display:none;position:fixed;inset:0;z-index:40;height:auto;background:rgba(233,223,208,.98)}.pvw.on{display:flex}.mob-only{display:inline-flex}}
+@media (max-width:760px){.app{grid-template-columns:1fr}.side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;padding:10px}.brand{border:0;padding:4px;margin:0 auto 4px 0;width:100%}.nav{display:flex;gap:4px;overflow-x:auto;width:100%}.nav button{width:auto;white-space:nowrap;padding:8px 10px}.side .conn{display:none}.main{padding:14px 14px 80px}
+  .irow{grid-template-columns:40px 1fr 84px;row-gap:8px}.irow .tg,.irow .mv{grid-column:2/-1}.irow .mv{flex-direction:row;justify-self:end}.irow .mv button{width:34px;height:28px;border-radius:6px!important;border:1px solid var(--line)!important}
+  .crow{grid-template-columns:1fr 1fr}.crow .in:nth-child(3){grid-column:1/-1}.row2{grid-template-columns:1fr}.pvw .ph{width:100%;border-radius:0;border:0;max-height:none}.pvw iframe{border-radius:0}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3l4.1 14.2L43 20l-14.1 4.2L32 39 24 29.2 16 39l3.1-14.8L5 20l14.9-2.8L24 3Z" stroke="currentColor" stroke-width="1.6"/><circle cx="24" cy="23" r="4" fill="currentColor"/></svg><span><b>Palace Istanbul</b><small>QR Menu Panel</small></span></div>
+    <nav class="nav" id="nav">
+      <button data-v="items" class="on">Dishes & prices <span id="cntItems">0</span></button>
+      <button data-v="cats">Categories</button>
+      <button data-v="notice">Announcement</button>
+      <button data-v="info">Restaurant info</button>
+      <button data-v="hist">History</button>
+      <button data-v="set">Settings</button>
+    </nav>
+    <div class="conn" id="conn"><span class="dot"></span>Not connected</div>
+  </aside>
+
+  <main class="main">
+    <div class="head">
+      <h1 id="title">Dishes & prices</h1>
+      <span class="pill" id="dirty">No changes</span>
+      <button class="btn mob-only" id="pvBtn" type="button">Preview</button>
+      <button class="btn" id="discard" type="button">Discard draft</button>
+      <button class="btn pri" id="publish" type="button">Publish to QR menu</button>
+    </div>
+    <div id="view"></div>
+  </main>
+
+  <aside class="pvw" id="pvw">
+    <p class="cap">Live preview of your draft · <button class="btn sm mob-only" id="pvClose" type="button">Close</button></p>
+    <div class="ph"><iframe id="frame" title="QR menu preview"></iframe></div>
+  </aside>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Edit dish"><div class="dh"><h2 id="dTitle">Edit dish</h2><button class="btn sm" id="dClose" type="button">Close</button></div><div class="db" id="dBody"></div><div class="df" id="dFoot"></div></aside>
+<div class="modal" id="modal"><div class="box"><h3 id="mT"></h3><p id="mP"></p><div class="acts"><button class="btn" id="mNo" type="button">Cancel</button><button class="btn pri" id="mYes" type="button">OK</button></div></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>window.PANEL={"base": "qr/", "repo": "nncPalaceDemo", "path": "qr/menu.json", "back": "admin-website.html"};window.MENU_DATA={"updated": "2026-11-12T00:00:00Z", "restaurant": {"name": "Palace Istanbul Kebab House", "phone": "(708) 529-3924", "phone_href": "tel:+17085293924", "address": "7207 W 87th St, Bridgeview, IL 60455", "open": "10:00", "close": "23:30", "timezone": "America/Chicago", "directions": "https://www.google.com/maps/dir/?api=1&destination=Palace+Istanbul+Kebab+House,+7207+W+87th+St,+Bridgeview,+IL+60455", "review": "", "review_fallback": "https://www.google.com/maps/place/Palace+Istanbul+Kebab+House/@41.7331787,-87.8001075,17z", "instagram": "https://www.instagram.com/palaceistanbul_kebabhouse/", "website": "https://palaceistanbul.net", "wifi": {"name": "", "password": ""}, "note": "Prices may change. Please tell your server about any allergies."}, "announcement": {"active": false, "text": "", "start": "", "end": ""}, "categories": [{"id": "breakfast", "title": "Breakfast", "tr": "Kahvaltı", "intro": "", "hidden": false, "items": [{"id": "turkish-special-breakfast", "name": "Turkish Special Breakfast", "tr": "Serpme Kahvaltı", "desc": "The full Turkish spread for two, on the copper tray.", "price": 70, "unit": "for 2", "tags": ["For 2"], "photo": "images/turkish-special-breakfast.webp", "available": true, "hidden": false, "featured": true}, {"id": "breakfast-plate", "name": "Breakfast Plate", "tr": "Kahvaltı Tabağı", "desc": "Mixed greens, cherry tomato, cucumber, feta, kashkaval cheese, olives, jam, honey, butter and fruit.", "price": 18, "unit": "", "tags": [], "photo": "images/breakfast-plate.webp", "available": true, "hidden": false, "featured": false}, {"id": "menemen", "name": "Menemen", "tr": "", "desc": "Traditional Turkish scrambled eggs with tomatoes and green peppers.", "price": 10, "unit": "", "tags": [], "photo": "images/menemen.webp", "available": true, "hidden": false, "featured": false}, {"id": "eggs-with-sucuk", "name": "Eggs with Sucuk", "tr": "Sucuklu Yumurta", "desc": "Three eggs with butter and sucuk.", "price": 11, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "eggs-with-butter", "name": "Eggs with Butter", "tr": "Tereyağlı Yumurta", "desc": "Three eggs with butter.", "price": 10, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "eggs-with-pastirma", "name": "Eggs with Pastırma", "tr": "Pastırmalı Yumurta", "desc": "Three eggs with butter and pastırma.", "price": 12, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}]}, {"id": "cold-appetizers", "title": "Cold Meze", "tr": "Soğuk Mezeler", "intro": "", "hidden": false, "items": [{"id": "spicy-vegetable-dip", "name": "Spicy Vegetable Dip", "tr": "Acılı Ezme", "desc": "Fresh tomatoes, spicy green pepper, red pepper, parsley, walnut, onion, garlic, lemon juice and seasonal spices.", "price": 8, "unit": "", "tags": ["Vegan", "Spicy"], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "hummus", "name": "Hummus", "tr": "", "desc": "Pureed chickpeas blended with fresh garlic, tahini and fresh herbs.", "price": 8, "unit": "", "tags": ["Vegan"], "photo": "images/hummus.webp", "available": true, "hidden": false, "featured": false}, {"id": "baba-ghanoush", "name": "Baba Ghanoush", "tr": "Babagannuş", "desc": "Mashed charcoal-grilled eggplant with yogurt, fresh garlic, olive oil, sesame paste and salt.", "price": 8, "unit": "", "tags": ["Vegetarian"], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "haydari", "name": "Haydari", "tr": "", "desc": "Greek yogurt, mint, dill, garlic and olive oil.", "price": 8, "unit": "", "tags": ["Vegetarian"], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "pink-lady", "name": "Pink Lady", "tr": "", "desc": "Roasted beets, Greek yogurt, walnuts, olive oil and garlic.", "price": 8, "unit": "", "tags": ["Vegetarian"], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "carrot-tarator", "name": "Carrot Tarator", "tr": "Havuç Tarator", "desc": "Roasted carrots, Greek yogurt, garlic, olive oil and dill.", "price": 8, "unit": "", "tags": ["Vegetarian"], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "mixed-meze", "name": "Mixed Meze", "tr": "Karışık Meze", "desc": "A sampler of our cold meze.", "price": 15, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "stuffed-grape-leaves", "name": "Stuffed Grape Leaves", "tr": "Yaprak Sarma", "desc": "Six pieces, served with yogurt.", "price": 8, "unit": "", "tags": ["Vegetarian"], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "cig-kofte", "name": "Çiğ Köfte", "tr": "", "desc": "Eight pieces with lettuce, lemon and pomegranate molasses.", "price": 10, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "cacik", "name": "Cacık", "tr": "", "desc": "Finely chopped cucumber blended with garlic, yogurt and fresh mint.", "price": 8, "unit": "", "tags": ["Vegetarian"], "photo": "", "available": true, "hidden": false, "featured": false}]}, {"id": "hot-appetizers", "title": "Hot Appetizers", "tr": "Ara Sıcaklar", "intro": "", "hidden": false, "items": [{"id": "cheese-rolls", "name": "Cheese Rolls", "tr": "Sigara Böreği", "desc": "", "price": 9, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "falafel-plate", "name": "Falafel Plate", "tr": "", "desc": "", "price": 10, "unit": "", "tags": ["Vegan"], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "mozzarella-sticks", "name": "Mozzarella Sticks", "tr": "", "desc": "", "price": 8, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "chicken-nuggets", "name": "Chicken Nuggets", "tr": "", "desc": "", "price": 10, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "french-fries", "name": "French Fries", "tr": "", "desc": "", "price": 6, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "onion-rings", "name": "Onion Rings", "tr": "", "desc": "", "price": 9, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}]}, {"id": "soups", "title": "Soups", "tr": "Çorbalar", "intro": "", "hidden": false, "items": [{"id": "lentil-soup", "name": "Lentil Soup", "tr": "Mercimek Çorbası", "desc": "", "price": 7, "unit": "", "tags": ["Vegetarian"], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "lamb-soup", "name": "Lamb Soup", "tr": "Kelle Paça", "desc": "", "price": 13, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}]}, {"id": "salads", "title": "Salads", "tr": "Salatalar", "intro": "Add on top: grilled salmon +$15 · chicken shish +$13 · beef shish +$13 · feta +$7", "hidden": false, "items": [{"id": "shepherd-salad", "name": "Shepherd Salad", "tr": "Çoban Salata", "desc": "Finely chopped tomatoes, cucumbers, red onions, green and red peppers and parsley with lemon and olive oil.", "price": 12, "unit": "", "tags": ["Vegan"], "photo": "images/shepherd-salad.webp", "available": true, "hidden": false, "featured": false}, {"id": "caesar-salad", "name": "Caesar Salad", "tr": "", "desc": "Caesar dressing, lettuce, croutons, parmesan and cherry tomatoes.", "price": 9, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "seasonal-salad", "name": "Seasonal Salad", "tr": "Mevsim Salata", "desc": "Grated carrots, red cabbage, lettuce, corn and cherry tomatoes.", "price": 12, "unit": "", "tags": [], "photo": "images/seasonal-salad.webp", "available": true, "hidden": false, "featured": false}, {"id": "avocado-salad", "name": "Avocado Salad", "tr": "", "desc": "Arugula, spinach, tomatoes, red onion, red peppers, walnuts, lemon, cherry tomatoes and avocado.", "price": 13, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "palace-signature-salad", "name": "Palace Signature Salad", "tr": "", "desc": "Spring mix, onion, tomatoes, cucumbers, feta, walnuts, pomegranate, cabbage, corn, red peppers, red onions and apricots.", "price": 14, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}]}, {"id": "wraps", "title": "Wraps", "tr": "Dürümler", "intro": "Add fries +$3", "hidden": false, "items": [{"id": "chicken-wrap", "name": "Chicken Wrap", "tr": "Tavuk Dürüm", "desc": "Sliced chicken, lettuce, tomato, onions, pickle sauce and pickled peppers.", "price": 12, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "doner-wrap", "name": "Döner Wrap", "tr": "Döner Dürüm", "desc": "Beef döner, lettuce, tomatoes, onions, pickle sauce and pickled peppers.", "price": 13, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "adana-wrap", "name": "Adana Wrap", "tr": "Adana Dürüm", "desc": "One skewer of Adana kebab with our special salad and pickled peppers.", "price": 15, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "kofte-wrap", "name": "Köfte Wrap", "tr": "Köfte Dürüm", "desc": "Four pieces of köfte with special salad, sauce and pickled peppers.", "price": 13, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "falafel-wrap", "name": "Falafel Wrap", "tr": "", "desc": "Four pieces of falafel, hummus, lettuce, onions, tomatoes, tahini sauce and pickled peppers.", "price": 11, "unit": "", "tags": ["Vegetarian"], "photo": "", "available": true, "hidden": false, "featured": false}]}, {"id": "grill", "title": "From the Grill", "tr": "Izgaralar", "intro": "Served with grilled tomato, pepper and rice.", "hidden": false, "items": [{"id": "adana-kebab", "name": "Adana Kebab", "tr": "", "desc": "Two skewers of Adana kebab.", "price": 25, "unit": "", "tags": [], "photo": "images/adana-kebab.webp", "available": true, "hidden": false, "featured": true}, {"id": "lamb-shish", "name": "Lamb Shish", "tr": "Kuzu Şiş", "desc": "Six pieces of lamb.", "price": 27, "unit": "", "tags": [], "photo": "images/lamb-shish.webp", "available": true, "hidden": false, "featured": false}, {"id": "lamb-chops", "name": "Lamb Chops", "tr": "Kuzu Pirzola", "desc": "Four chops.", "price": 33, "unit": "", "tags": [], "photo": "images/lamb-chops.webp", "available": true, "hidden": false, "featured": true}, {"id": "beef-shish", "name": "Beef Shish", "tr": "Dana Şiş", "desc": "Six pieces of beef.", "price": 26, "unit": "", "tags": [], "photo": "images/beef-shish.webp", "available": true, "hidden": false, "featured": false}, {"id": "chicken-shish", "name": "Chicken Shish", "tr": "Tavuk Şiş", "desc": "Six pieces of chicken.", "price": 22, "unit": "", "tags": [], "photo": "images/chicken-shish.webp", "available": true, "hidden": false, "featured": false}, {"id": "grilled-chicken-wings", "name": "Grilled Chicken Wings", "tr": "Tavuk Kanat", "desc": "Six wings.", "price": 24, "unit": "", "tags": [], "photo": "images/grilled-chicken-wings.webp", "available": true, "hidden": false, "featured": false}, {"id": "oven-salmon", "name": "Oven Salmon", "tr": "Fırın Somon", "desc": "7 oz salmon with grilled tomato, pepper and vegetable salad.", "price": 27, "unit": "", "tags": [], "photo": "images/oven-salmon.webp", "available": true, "hidden": false, "featured": false}, {"id": "inegol-kofte", "name": "İnegöl Köfte", "tr": "", "desc": "Six İnegöl-style meatballs.", "price": 25, "unit": "", "tags": [], "photo": "images/inegol-kofte.webp", "available": true, "hidden": false, "featured": false}, {"id": "doner-plate", "name": "Döner Plate", "tr": "Porsiyon Döner", "desc": "Sliced beef döner.", "price": 25, "unit": "", "tags": [], "photo": "images/doner-plate.webp", "available": true, "hidden": false, "featured": false}]}, {"id": "specials", "title": "House Specials", "tr": "Özel Yemekler", "intro": "", "hidden": false, "items": [{"id": "iskender", "name": "İskender", "tr": "", "desc": "Döner over bread with tomato sauce, yogurt and melted butter.", "price": 26, "unit": "", "tags": [], "photo": "images/iskender.webp", "available": true, "hidden": false, "featured": true}, {"id": "beyti", "name": "Beyti", "tr": "", "desc": "Adana skewer wrapped with cheese, tomato sauce, grilled tomato and pepper, finished with butter.", "price": 27, "unit": "", "tags": [], "photo": "images/beyti.webp", "available": true, "hidden": false, "featured": true}, {"id": "chicken-ali-nazik", "name": "Chicken Ali Nazik", "tr": "Tavuklu Ali Nazik", "desc": "Roasted eggplant, sautéed chicken, tomato sauce, grilled tomato and pepper.", "price": 26, "unit": "", "tags": [], "photo": "images/chicken-ali-nazik.webp", "available": true, "hidden": false, "featured": false}, {"id": "lamb-ali-nazik", "name": "Lamb Ali Nazik", "tr": "Kuzulu Ali Nazik", "desc": "Roasted eggplant, sautéed lamb, sauce, grilled tomato and pepper.", "price": 28, "unit": "", "tags": [], "photo": "images/lamb-ali-nazik.webp", "available": true, "hidden": false, "featured": false}, {"id": "mix-grill", "name": "Mix Grill", "tr": "Karışık Izgara", "desc": "Adana kebab, chicken shish, beef shish, chicken wing and meatball with salad and rice.", "price": 35, "unit": "", "tags": [], "photo": "images/mix-grill.webp", "available": true, "hidden": false, "featured": true}, {"id": "beef-stew", "name": "Beef Stew", "tr": "Et Sote", "desc": "Sautéed vegetables and beef tenderloin slices with rice.", "price": 25, "unit": "", "tags": [], "photo": "images/beef-stew.webp", "available": true, "hidden": false, "featured": false}, {"id": "chicken-stew", "name": "Chicken Stew", "tr": "Tavuk Sote", "desc": "Sautéed vegetables and chicken cubes with rice.", "price": 23, "unit": "", "tags": [], "photo": "images/chicken-stew.webp", "available": true, "hidden": false, "featured": false}, {"id": "roasted-lamb", "name": "Roasted Lamb", "tr": "Kuzu Tandır", "desc": "Roasted lamb with rice, grilled tomatoes and peppers.", "price": 28, "unit": "", "tags": [], "photo": "images/roasted-lamb.webp", "available": true, "hidden": false, "featured": false}, {"id": "homemade-manti", "name": "Homemade Mantı", "tr": "Ev Mantısı", "desc": "Turkish dumplings, made in house.", "price": 19, "unit": "", "tags": [], "photo": "images/homemade-manti.webp", "available": true, "hidden": false, "featured": true}, {"id": "kofte", "name": "Köfte", "tr": "Izgara Köfte", "desc": "Grilled tomato, green pepper, salad and rice.", "price": 24, "unit": "", "tags": [], "photo": "images/kofte.webp", "available": true, "hidden": false, "featured": false}]}, {"id": "platters", "title": "Family Platters", "tr": "Karışık Tabaklar", "intro": "Made for the whole table.", "hidden": false, "items": [{"id": "palace-plate", "name": "Palace Plate", "tr": "", "desc": "Adana, beef döner, chicken shish, beef shish, chicken wings and meatballs with rice, roasted tomato and pepper.", "price": 75, "unit": "serves 2–3", "tags": ["Serves 2–3"], "photo": "images/palace-plate.webp", "available": true, "hidden": false, "featured": false}, {"id": "palace-family", "name": "Palace Family", "tr": "", "desc": "Adana, beef döner, chicken shish, beef shish, lahmacun, chicken wings and meatballs with rice, fries, roasted tomato and pepper.", "price": 155, "unit": "serves 4–5", "tags": ["Serves 4–5"], "photo": "images/palace-family.webp", "available": true, "hidden": false, "featured": true}, {"id": "platter-per-person", "name": "Platter, per person", "tr": "", "desc": "", "price": 30, "unit": "per person", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}]}, {"id": "flatbread", "title": "Pide & Lahmacun", "tr": "Pide ve Lahmacun", "intro": "Add cheese +$3", "hidden": false, "items": [{"id": "lahmacun", "name": "Lahmacun", "tr": "", "desc": "Thin, crisp flatbread with spiced minced meat.", "price": 8, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "mixed-pide", "name": "Mixed Pide", "tr": "Karışık Pide", "desc": "", "price": 20, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "cheese-pide", "name": "Cheese Pide", "tr": "Kaşarlı Pide", "desc": "", "price": 16, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "diced-beef-pide", "name": "Diced Beef Pide", "tr": "Kuşbaşılı Pide", "desc": "", "price": 18, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "konya-style-meat-bread", "name": "Konya-Style Meat Bread", "tr": "Etli Ekmek", "desc": "", "price": 22, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "cheese-sucuk-pide", "name": "Cheese & Sucuk Pide", "tr": "Kaşarlı Sucuklu Pide", "desc": "", "price": 17, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}]}, {"id": "kids", "title": "Kids", "tr": "Çocuk Menüsü", "intro": "", "hidden": false, "items": [{"id": "mac-and-cheese-bites", "name": "Mac and Cheese Bites", "tr": "", "desc": "", "price": 10, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "small-kofte", "name": "Small Köfte", "tr": "", "desc": "", "price": 15, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "small-adana-kebab", "name": "Small Adana Kebab", "tr": "", "desc": "", "price": 16, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}]}, {"id": "desserts", "title": "Desserts", "tr": "Tatlılar", "intro": "Add ice cream +$4", "hidden": false, "items": [{"id": "kunefe", "name": "Künefe", "tr": "", "desc": "Shredded pastry, melted cheese and syrup, served warm.", "price": 10, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": true}, {"id": "baklava", "name": "Baklava", "tr": "", "desc": "", "price": 7, "unit": "any 3 pieces", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "tulumba", "name": "Tulumba", "tr": "", "desc": "", "price": 7, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "carrot-slice-baklava", "name": "Carrot Slice Baklava", "tr": "Havuç Dilimi Baklava", "desc": "", "price": 8, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "rice-pudding", "name": "Rice Pudding", "tr": "Sütlaç", "desc": "", "price": 6, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}]}, {"id": "drinks", "title": "Drinks", "tr": "İçecekler", "intro": "", "hidden": false, "items": [{"id": "turkish-tea", "name": "Turkish Tea", "tr": "Çay", "desc": "Black tea in a tulip glass.", "price": 2, "unit": "", "tags": [], "photo": "images/turkish-tea.webp", "available": true, "hidden": false, "featured": false}, {"id": "turkish-coffee", "name": "Turkish Coffee", "tr": "Türk Kahvesi", "desc": "", "price": 5, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "homemade-lemonade", "name": "Homemade Lemonade", "tr": "Ev Yapımı Limonata", "desc": "", "price": 6, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "ayran-or-salgam", "name": "Ayran or Şalgam", "tr": "", "desc": "Salted yogurt drink, or fermented purple-carrot juice.", "price": 4, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "turkish-soft-drink", "name": "Turkish Soft Drink", "tr": "", "desc": "", "price": 3.5, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}, {"id": "can-soft-drink", "name": "Can Soft Drink", "tr": "", "desc": "", "price": 3, "unit": "", "tags": [], "photo": "", "available": true, "hidden": false, "featured": false}]}]};</script>
+<script>
+(function(){
+"use strict";
+var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function slug(s){return String(s).toLowerCase().replace(/[çÇ]/g,"c").replace(/[ğĞ]/g,"g").replace(/[ıİ]/g,"i").replace(/[öÖ]/g,"o").replace(/[şŞ]/g,"s").replace(/[üÜ]/g,"u").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"item"}
+var LS={get:function(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}},del:function(k){try{localStorage.removeItem(k)}catch(e){}}};
+var P=Object.assign({base:"../",repo:"palace-istanbul-qr",path:"menu.json",back:""},window.PANEL||{});
+var DEF={owner:"YavasEmirhan",repo:P.repo,branch:"main",path:P.path,token:"",remember:true};
+var S=Object.assign({},DEF,LS.get("pq-settings",{}));if(!S.token)S.token=(function(){try{return sessionStorage.getItem("pq-token")||""}catch(e){return ""}})();
+var live=null,liveSha=null,draft=null,pending=LS.get("pq-pending",{})||{},view="items",fcat="all",fq="";
+
+function toast(t,err){var e=$("#toast");e.textContent=t;e.className="toast on"+(err?" err":"");clearTimeout(toast.t);toast.t=setTimeout(function(){e.className="toast"},4200)}
+function ask(title,text,yes){return new Promise(function(res){$("#mT").textContent=title;$("#mP").innerHTML=text;$("#mYes").textContent=yes||"OK";$("#modal").classList.add("on");
+  $("#mYes").onclick=function(){$("#modal").classList.remove("on");res(true)};$("#mNo").onclick=function(){$("#modal").classList.remove("on");res(false)}})}
+
+/* ---------- GitHub ---------- */
+function gh(path,opt){opt=opt||{};var h={"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};if(S.token)h.Authorization="Bearer "+S.token;if(opt.body)h["Content-Type"]="application/json";
+  return fetch("https://api.github.com/repos/"+S.owner+"/"+S.repo+path,{method:opt.method||"GET",headers:h,body:opt.body?JSON.stringify(opt.body):undefined,cache:"no-store"}).then(function(r){if(!r.ok)return r.json().catch(function(){return{}}).then(function(j){var e=new Error((j&&j.message)||("GitHub error "+r.status));e.status=r.status;throw e});return r.status===204?{}:r.json()})}
+function b64e(str){return btoa(unescape(encodeURIComponent(str)))}
+function b64d(b){return decodeURIComponent(escape(atob(String(b).replace(/\s/g,""))))}
+function setConn(state,txt){$("#conn").innerHTML='<span class="dot '+(state||"")+'"></span>'+esc(txt)}
+
+function loadLive(){
+  if(S.token){return gh("/contents/"+S.path+"?ref="+encodeURIComponent(S.branch)).then(function(j){liveSha=j.sha;live=JSON.parse(b64d(j.content));setConn("ok","Connected to GitHub · "+S.owner+"/"+S.repo);return live})
+    .catch(function(e){setConn("bad","GitHub: "+e.message);return loadSite()})}
+  return loadSite();
+}
+function loadSite(){return fetch(P.base+"menu.json?v="+Date.now(),{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){live=j;if(!S.token)setConn("","Read-only · add a GitHub token in Settings to publish");return j})
+  .catch(function(){live=window.MENU_DATA?clone(window.MENU_DATA):{restaurant:{},announcement:{},categories:[]};setConn("bad","Could not load menu.json");return live})}
+
+/* ---------- draft ---------- */
+function save(){var ok=LS.set("pq-draft",draft);LS.set("pq-pending",pending)||toast("Photos are too large to keep in the browser draft. Publish soon so they are not lost.",true);markDirty();sendPreview()}
+function changes(){if(!live||!draft)return 0;var n=0,a={},b={};
+  (live.categories||[]).forEach(function(c){c.items.forEach(function(i){a[i.id]=JSON.stringify([c.id,i])})});(draft.categories||[]).forEach(function(c){c.items.forEach(function(i){b[i.id]=JSON.stringify([c.id,i])})});
+  for(var k in b)if(a[k]!==b[k])n++;for(k in a)if(!(k in b))n++;
+  var strip=function(d){return JSON.stringify([d.restaurant,d.announcement,(d.categories||[]).map(function(c){return [c.id,c.title,c.tr,c.intro,c.hidden,c.items.map(function(i){return i.id})]})])};
+  if(strip(live)!==strip(draft))n++;return n}
+function markDirty(){var n=changes(),e=$("#dirty");e.textContent=n?n+" unpublished change"+(n>1?"s":""):"No changes";e.className="pill"+(n?" dirty":"");$("#publish").disabled=!n;
+  var c=0;(draft.categories||[]).forEach(function(x){c+=x.items.length});$("#cntItems").textContent=c}
+function allItems(){var o=[];draft.categories.forEach(function(c){c.items.forEach(function(i){o.push({c:c,i:i})})});return o}
+function findItem(id){var r=null;draft.categories.forEach(function(c){c.items.forEach(function(i,k){if(i.id===id)r={c:c,i:i,k:k}})});return r}
+function thumbOf(p){if(!p)return "";if(pending[p])return pending[p];var t=p.replace(/(^|\/)images\//,"$1images/thumb/");return P.base+t}
+
+/* ---------- preview ---------- */
+var frame=$("#frame"),ready=false;frame.src=P.base+"index.html?preview=1";if(P.back){var bk=document.createElement("a");bk.href=P.back;bk.className="back";bk.textContent="← Website management";$(".side .conn").before(bk)}
+window.addEventListener("message",function(e){if(e.data&&e.data.type==="palace-preview-ready"){ready=true;sendPreview()}});
+function sendPreview(){if(!ready||!draft||!frame.contentWindow)return;var blobs={};for(var k in pending)blobs[k]=pending[k];frame.contentWindow.postMessage({type:"palace-preview",data:draft,blobs:blobs},"*")}
+$("#pvBtn").onclick=function(){$("#pvw").classList.add("on")};$("#pvClose").onclick=function(){$("#pvw").classList.remove("on")};
+
+/* ---------- views ---------- */
+var TITLES={items:"Dishes & prices",cats:"Categories",notice:"Announcement",info:"Restaurant info",hist:"History",set:"Settings"};
+$("#nav").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;view=b.getAttribute("data-v");$$("#nav button").forEach(function(x){x.classList.toggle("on",x===b)});draw()});
+function draw(){$("#title").textContent=TITLES[view];({items:vItems,cats:vCats,notice:vNotice,info:vInfo,hist:vHist,set:vSet})[view]()}
+
+function sw(name,checked,label){return '<label class="sw"><input type="checkbox" data-sw="'+name+'"'+(checked?" checked":"")+'><i></i>'+esc(label)+'</label>'}
+function vItems(){
+  var opts='<option value="all">All categories</option>'+draft.categories.map(function(c){return '<option value="'+esc(c.id)+'"'+(fcat===c.id?" selected":"")+'>'+esc(c.title)+'</option>'}).join("");
+  var q=fq.toLowerCase(),html='<div class="tool"><select id="fcat" aria-label="Category">'+opts+'</select><input id="fq" type="search" placeholder="Search dishes…" value="'+esc(fq)+'"><button class="btn gold" id="addItem" type="button">+ Add dish</button></div>';
+  html+='<p class="help" style="color:var(--muted);margin:12px 0 0;font-size:13px">Change a price right in the list. <b>Available</b> off = shows “Sold out today”. <b>Visible</b> off = hidden from the menu. ★ = shown in House favorites.</p>';
+  draft.categories.forEach(function(c){if(fcat!=="all"&&fcat!==c.id)return;var items=c.items.filter(function(i){return !q||(i.name+" "+(i.tr||"")).toLowerCase().indexOf(q)>-1});if(!items.length&&q)return;
+    html+='<div class="cathead"><h3>'+esc(c.title)+'</h3><span>'+esc(c.tr||"")+' · '+c.items.length+' dishes'+(c.hidden?' · hidden':'')+'</span></div>';
+    items.forEach(function(i){html+='<div class="irow'+(i.hidden?" off":"")+'" data-id="'+esc(i.id)+'"><span class="th" style="background-image:url(\''+thumbOf(i.photo)+'\')"></span>'+
+      '<div class="nm" data-edit="'+esc(i.id)+'" title="Edit"><b>'+esc(i.name)+'</b><small>'+esc(i.tr||"")+(i.unit?' · '+esc(i.unit):'')+'</small></div>'+
+      '<label class="price">$<input type="number" step="0.5" min="0" inputmode="decimal" value="'+esc(i.price)+'" data-price aria-label="Price of '+esc(i.name)+'"></label>'+
+      '<div class="tg">'+sw("available",i.available!==false,"Available")+sw("visible",!i.hidden,"Visible")+'<button type="button" class="star'+(i.featured?" on":"")+'" data-star aria-label="Favorite" title="House favorite">★</button></div>'+
+      '<div class="mv"><button type="button" data-mv="-1" aria-label="Move up">▲</button><button type="button" data-mv="1" aria-label="Move down">▼</button></div></div>'})});
+  $("#view").innerHTML=html;
+  $("#fcat").onchange=function(){fcat=this.value;vItems()};$("#fq").oninput=function(){fq=this.value;var p=this.selectionStart;vItems();var n=$("#fq");n.focus();n.setSelectionRange(p,p)};
+  $("#addItem").onclick=function(){var c=fcat!=="all"?draft.categories.find(function(x){return x.id===fcat}):draft.categories[0];var id=slug("new dish")+"-"+Date.now().toString(36);
+    c.items.unshift({id:id,name:"New dish",tr:"",desc:"",price:0,unit:"",tags:[],photo:"",available:true,hidden:true,featured:false});save();vItems();editItem(id)};
+}
+$("#view").addEventListener("change",function(e){var row=e.target.closest(".irow");if(!row)return;var f=findItem(row.getAttribute("data-id"));if(!f)return;
+  if(e.target.hasAttribute("data-price")){var v=parseFloat(e.target.value);if(!isNaN(v)){f.i.price=Math.round(v*100)/100;save();toast(f.i.name+" → $"+f.i.price)}return}
+  var s=e.target.getAttribute("data-sw");if(s==="available"){f.i.available=e.target.checked;save()}if(s==="visible"){f.i.hidden=!e.target.checked;row.classList.toggle("off",f.i.hidden);save()}});
+$("#view").addEventListener("click",function(e){var row=e.target.closest(".irow");
+  if(row){var f=findItem(row.getAttribute("data-id"));if(!f)return;
+    if(e.target.closest("[data-star]")){f.i.featured=!f.i.featured;e.target.closest("[data-star]").classList.toggle("on",f.i.featured);save();return}
+    var mv=e.target.closest("[data-mv]");if(mv){var d=+mv.getAttribute("data-mv"),j=f.k+d;if(j<0||j>=f.c.items.length)return;var t=f.c.items[j];f.c.items[j]=f.i;f.c.items[f.k]=t;save();vItems();return}
+    if(e.target.closest("[data-edit]")){editItem(f.i.id)}}});
+
+var TAGS=["Vegan","Vegetarian","Spicy","Gluten-free","New","For 2","Serves 2–3","Serves 4–5","Halal"];
+function editItem(id){var f=findItem(id);if(!f)return;var i=f.i;
+  var copts=draft.categories.map(function(c){return '<option value="'+esc(c.id)+'"'+(c===f.c?" selected":"")+'>'+esc(c.title)+'</option>'}).join("");
+  $("#dTitle").textContent=i.name||"Edit dish";
+  $("#dBody").innerHTML='<label class="f" for="e-name">Dish name (English)</label><input class="in" id="e-name" value="'+esc(i.name)+'">'+
+   '<label class="f" for="e-tr">Turkish name</label><input class="in" id="e-tr" value="'+esc(i.tr)+'">'+
+   '<div class="row2"><div><label class="f" for="e-price">Price ($)</label><input class="in" id="e-price" type="number" step="0.5" min="0" value="'+esc(i.price)+'"></div><div><label class="f" for="e-unit">Note next to price</label><input class="in" id="e-unit" placeholder="for 2 · 6 pcs · serves 2–3" value="'+esc(i.unit)+'"></div></div>'+
+   '<label class="f" for="e-cat">Category</label><select class="in" id="e-cat">'+copts+'</select>'+
+   '<label class="f" for="e-desc">Description</label><textarea class="in" id="e-desc" maxlength="260">'+esc(i.desc)+'</textarea>'+
+   '<label class="f">Labels</label><div class="chipsel" id="e-tags">'+TAGS.map(function(t){return '<button type="button" class="'+((i.tags||[]).indexOf(t)>-1?"on":"")+'">'+esc(t)+'</button>'}).join("")+'</div>'+
+   '<label class="f">Photo</label><div class="photo"><div class="pv" id="e-pv" style="background-image:url(\''+(i.photo?(pending[i.photo]||P.base+i.photo):"")+'\')">'+(i.photo?"":"No photo")+'</div><div><input type="file" id="e-file" accept="image/*" hidden><button class="btn sm" type="button" id="e-up">Upload photo</button> <button class="btn sm danger" type="button" id="e-rm"'+(i.photo?"":" disabled")+'>Remove</button><p style="font-size:12px;color:var(--muted);margin:8px 0 0">JPG, PNG or HEIC from your phone. It is resized automatically.</p></div></div>'+
+   '<div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:18px">'+sw("e-av",i.available!==false,"Available today")+sw("e-vis",!i.hidden,"Visible on menu")+sw("e-fav",i.featured,"House favorite")+'</div>';
+  $("#dFoot").innerHTML='<button class="btn danger" id="e-del" type="button">Delete dish</button><span style="flex:1"></span><button class="btn pri" id="e-ok" type="button">Done</button>';
+  var tags=(i.tags||[]).slice(),newPhoto=null;
+  $("#e-tags").onclick=function(e){var b=e.target.closest("button");if(!b)return;var t=b.textContent,k=tags.indexOf(t);if(k>-1)tags.splice(k,1);else tags.push(t);b.classList.toggle("on")};
+  $("#e-up").onclick=function(){$("#e-file").click()};
+  $("#e-file").onchange=function(){var file=this.files[0];if(!file)return;$("#e-up").textContent="Processing…";
+    processPhoto(file).then(function(r){newPhoto=r;var pv=$("#e-pv");pv.style.backgroundImage="url('"+r.big+"')";pv.textContent="";$("#e-rm").disabled=false;$("#e-up").textContent="Replace photo"})
+    .catch(function(){toast("This photo could not be read. Try a JPG or PNG.",true);$("#e-up").textContent="Upload photo"})};
+  $("#e-rm").onclick=function(){newPhoto="remove";var pv=$("#e-pv");pv.style.backgroundImage="";pv.textContent="No photo";this.disabled=true};
+  $("#e-del").onclick=function(){ask("Delete “"+i.name+"”?","It disappears from the QR menu after you publish. To hide it only for a while, turn off <b>Visible</b> instead.","Delete").then(function(y){if(!y)return;var g=findItem(id);g.c.items.splice(g.k,1);save();closeDrawer();draw()})};
+  $("#e-ok").onclick=function(){var g=findItem(id);
+    i.name=$("#e-name").value.trim()||"Untitled";i.tr=$("#e-tr").value.trim();var p=parseFloat($("#e-price").value);i.price=isNaN(p)?0:Math.round(p*100)/100;i.unit=$("#e-unit").value.trim();i.desc=$("#e-desc").value.trim();i.tags=tags;
+    i.available=$('[data-sw="e-av"]').checked;i.hidden=!$('[data-sw="e-vis"]').checked;i.featured=$('[data-sw="e-fav"]').checked;
+    if(newPhoto==="remove")i.photo="";else if(newPhoto){var base="images/u-"+slug(i.name)+"-"+Date.now().toString(36)+".webp";pending[base]=newPhoto.big;pending[base.replace("images/","images/thumb/")]=newPhoto.thumb;i.photo=base}
+    var nc=$("#e-cat").value;if(nc!==g.c.id){g.c.items.splice(g.k,1);draft.categories.find(function(c){return c.id===nc}).items.unshift(i)}
+    save();closeDrawer();draw();toast("Saved to draft. Publish when you are ready.")};
+  $("#drawer").classList.add("on");$("#scrim").classList.add("on");setTimeout(function(){$("#e-name").focus()},300)}
+function closeDrawer(){$("#drawer").classList.remove("on");$("#scrim").classList.remove("on")}
+$("#dClose").onclick=closeDrawer;$("#scrim").onclick=closeDrawer;document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer()});
+
+function processPhoto(file){return new Promise(function(res,rej){var url=URL.createObjectURL(file),im=new Image();im.onload=function(){
+  function out(w,h,sx,sy,sw2,sh2,q){var c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(im,sx,sy,sw2,sh2,0,0,w,h);var d=c.toDataURL("image/webp",q);if(d.indexOf("image/webp")<0)d=c.toDataURL("image/jpeg",q);return d}
+  var W=im.naturalWidth,H=im.naturalHeight,k=Math.min(1,1200/Math.max(W,H)),s=Math.min(W,H);
+  var big=out(Math.round(W*k),Math.round(H*k),0,0,W,H,.82),thumb=out(240,240,(W-s)/2,(H-s)/2,s,s,.78);URL.revokeObjectURL(url);res({big:big,thumb:thumb})};im.onerror=rej;im.src=url})}
+
+function vCats(){var html='<div class="card"><h2>Categories</h2><p class="help">Order here is the order on the QR menu. A hidden category disappears with all its dishes.</p>'+
+  draft.categories.map(function(c,k){return '<div class="crow" data-k="'+k+'"><input class="in" data-f="title" value="'+esc(c.title)+'" aria-label="Name"><input class="in" data-f="tr" value="'+esc(c.tr)+'" aria-label="Turkish name" placeholder="Turkish name"><input class="in" data-f="intro" value="'+esc(c.intro)+'" placeholder="Short note (e.g. Add fries +$3)" aria-label="Note">'+
+   sw("cvis",!c.hidden,"Visible")+'<div class="mv"><button type="button" data-cm="-1" aria-label="Up">▲</button><button type="button" data-cm="1" aria-label="Down">▼</button></div><button class="btn sm danger" type="button" data-cdel'+(c.items.length?" disabled title=\"Move or delete its dishes first\"":"")+'>Delete</button></div>'}).join("")+
+  '<div class="tool"><button class="btn gold" id="addCat" type="button">+ Add category</button></div></div>';
+  $("#view").innerHTML=html;
+  $$(".crow").forEach(function(r){var c=draft.categories[+r.getAttribute("data-k")];
+    $$("input[data-f]",r).forEach(function(inp){inp.onchange=function(){c[inp.getAttribute("data-f")]=inp.value.trim();save()}});
+    $('[data-sw="cvis"]',r).onchange=function(){c.hidden=!this.checked;save()};
+    $$("[data-cm]",r).forEach(function(b){b.onclick=function(){var k=draft.categories.indexOf(c),j=k+ +b.getAttribute("data-cm");if(j<0||j>=draft.categories.length)return;draft.categories[k]=draft.categories[j];draft.categories[j]=c;save();vCats()}});
+    var d=$("[data-cdel]",r);if(d)d.onclick=function(){draft.categories.splice(draft.categories.indexOf(c),1);save();vCats()}});
+  $("#addCat").onclick=function(){draft.categories.push({id:"cat-"+Date.now().toString(36),title:"New category",tr:"",intro:"",hidden:false,items:[]});save();vCats()}}
+
+function vNotice(){var A=draft.announcement=draft.announcement||{active:false,text:"",start:"",end:""};
+  $("#view").innerHTML='<div class="card"><h2>Announcement bar</h2><p class="help">A short message at the top of the QR menu: a campaign, a holiday schedule, a new dish. Dates use Chicago time; leave them empty to show it until you turn it off.</p>'+
+   sw("an-on",A.active,"Show the announcement")+'<label class="f" for="an-t">Message</label><textarea class="in" id="an-t" maxlength="160" placeholder="e.g. Thanksgiving: open 12 PM – 9 PM. Family platters ready for pickup.">'+esc(A.text)+'</textarea>'+
+   '<div class="row2"><div><label class="f" for="an-s">Start date</label><input class="in" id="an-s" type="date" value="'+esc(A.start)+'"></div><div><label class="f" for="an-e">End date</label><input class="in" id="an-e" type="date" value="'+esc(A.end)+'"></div></div></div>';
+  var up=function(){A.active=$('[data-sw="an-on"]').checked;A.text=$("#an-t").value.trim();A.start=$("#an-s").value;A.end=$("#an-e").value;save()};
+  $('[data-sw="an-on"]').onchange=up;$("#an-t").oninput=up;$("#an-s").onchange=up;$("#an-e").onchange=up}
+
+function vInfo(){var R=draft.restaurant=draft.restaurant||{};R.wifi=R.wifi||{name:"",password:""};
+  var fld=function(k,l,ph,type){return '<div><label class="f" for="r-'+k+'">'+l+'</label><input class="in" id="r-'+k+'" data-r="'+k+'" type="'+(type||"text")+'" value="'+esc(R[k]||"")+'" placeholder="'+esc(ph||"")+'"></div>'};
+  $("#view").innerHTML='<div class="card"><h2>Opening hours & contact</h2><p class="help">Used for the “Open now” badge and the buttons at the bottom of the menu.</p>'+
+   '<div class="row2">'+fld("open","Opens","","time")+fld("close","Closes","","time")+'</div><div class="row2">'+fld("phone","Phone","(708) 529-3924")+fld("address","Address")+'</div></div>'+
+   '<div class="card"><h2>Google review button</h2><p class="help">Guests who scan the QR are already at the table: the best moment to ask for a review. Paste the restaurant’s “Get more reviews” link from Google Business Profile.</p>'+fld("review","Review link","https://g.page/r/…/review")+'</div>'+
+   '<div class="card"><h2>Guest Wi-Fi</h2><p class="help">Leave empty to hide the Wi-Fi box.</p><div class="row2"><div><label class="f" for="w-n">Network name</label><input class="in" id="w-n" value="'+esc(R.wifi.name)+'"></div><div><label class="f" for="w-p">Password</label><input class="in" id="w-p" value="'+esc(R.wifi.password)+'"></div></div></div>'+
+   '<div class="card"><h2>Footer</h2>'+fld("note","Small print","Prices may change. Please tell your server about any allergies.")+'<div class="row2">'+fld("instagram","Instagram link")+fld("website","Website")+'</div></div>';
+  $$("[data-r]").forEach(function(inp){inp.onchange=function(){var k=inp.getAttribute("data-r");R[k]=inp.value.trim();if(k==="phone")R.phone_href="tel:+1"+R.phone.replace(/\D/g,"").replace(/^1(?=\d{10}$)/,"");save()}});
+  $("#w-n").onchange=function(){R.wifi.name=this.value.trim();save()};$("#w-p").onchange=function(){R.wifi.password=this.value.trim();save()}}
+
+function vHist(){if(!S.token){$("#view").innerHTML='<div class="card"><h2>History</h2><p class="help">Connect GitHub in Settings to see every published version and bring back an older one.</p></div>';return}
+  $("#view").innerHTML='<div class="card"><h2>Published versions</h2><p class="help">Every publish is saved. Load an older version into the draft, check it in the preview, then publish it again.</p><div id="hl">Loading…</div></div>';
+  gh("/commits?path="+S.path+"&sha="+encodeURIComponent(S.branch)+"&per_page=15").then(function(list){$("#hl").innerHTML=list.map(function(c,k){var d=new Date(c.commit.author.date);return '<div class="hist"><div><b>'+esc(c.commit.message.split("\n")[0])+'</b><br><small>'+d.toLocaleString("en-US",{timeZone:"America/Chicago",dateStyle:"medium",timeStyle:"short"})+' Chicago'+(k===0?" · live now":"")+'</small></div><button class="btn sm" type="button" data-sha="'+c.sha+'">Load into draft</button></div>'}).join("")||"No versions yet.";
+    $$("[data-sha]").forEach(function(b){b.onclick=function(){gh("/contents/"+S.path+"?ref="+b.getAttribute("data-sha")).then(function(j){draft=JSON.parse(b64d(j.content));save();toast("Older version loaded into the draft. Check the preview, then publish.")}).catch(function(e){toast(e.message,true)})}})})
+  .catch(function(e){$("#hl").textContent=e.message})}
+
+function vSet(){$("#view").innerHTML='<div class="card"><h2>Publishing connection</h2><p class="help">The QR menu lives in a GitHub repository. Publishing writes <code>menu.json</code> and new photos there; the menu updates in about a minute. Nobody can publish without the access token below.</p>'+
+  '<div class="row2"><div><label class="f" for="s-o">Owner</label><input class="in" id="s-o" value="'+esc(S.owner)+'"></div><div><label class="f" for="s-r">Repository</label><input class="in" id="s-r" value="'+esc(S.repo)+'"></div></div>'+
+  '<div class="row2"><div><label class="f" for="s-b">Branch</label><input class="in" id="s-b" value="'+esc(S.branch)+'"></div><div><label class="f" for="s-p">Menu file</label><input class="in" id="s-p" value="'+esc(S.path)+'"></div></div>'+
+  '<label class="f" for="s-t">Access token</label><input class="in" id="s-t" type="password" autocomplete="off" value="'+esc(S.token)+'" placeholder="github_pat_…">'+
+  '<div style="margin-top:12px">'+sw("s-rem",S.remember,"Remember on this device")+'</div>'+
+  '<div class="tool"><button class="btn pri" id="s-save" type="button">Save & connect</button><button class="btn" id="s-out" type="button">Forget token</button></div>'+
+  '<div class="note"><b>How to create the token (one time):</b><ol class="steps"><li>GitHub → Settings → Developer settings → Fine-grained tokens → Generate new token.</li><li>Repository access: <i>Only select repositories</i> → <code>'+esc(S.repo)+'</code>.</li><li>Permissions → Repository → <b>Contents: Read and write</b>. Nothing else.</li><li>Copy the token and paste it here. Use “Remember” only on the restaurant’s own computer.</li></ol></div></div>'+
+  '<div class="card"><h2>Backup</h2><p class="help">Download the current draft as a file, or load a file you saved before.</p><div class="tool"><button class="btn" id="s-exp" type="button">Download menu.json</button><input type="file" id="s-impf" accept="application/json,.json" hidden><button class="btn" id="s-imp" type="button">Load from file</button></div></div>';
+  $("#s-save").onclick=function(){S.owner=$("#s-o").value.trim();S.repo=$("#s-r").value.trim();S.branch=$("#s-b").value.trim()||"main";S.path=$("#s-p").value.trim()||"menu.json";S.token=$("#s-t").value.trim();S.remember=$('[data-sw="s-rem"]').checked;persistSettings();
+    gh("").then(function(r){if(!r.permissions||!r.permissions.push)throw new Error("This token can read but not write to "+S.repo+".");return loadLive()}).then(function(){toast("Connected. You can publish now.");markDirty()}).catch(function(e){setConn("bad",e.message);toast(e.message,true)})};
+  $("#s-out").onclick=function(){S.token="";persistSettings();setConn("","Token removed from this device");vSet()};
+  $("#s-exp").onclick=function(){var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(draft,null,1)],{type:"application/json"}));a.download="menu.json";document.body.appendChild(a);a.click();a.remove()};
+  $("#s-imp").onclick=function(){$("#s-impf").click()};$("#s-impf").onchange=function(){var f=this.files[0];if(!f)return;f.text().then(function(t){var j=JSON.parse(t);if(!j.categories)throw 0;draft=j;save();toast("Loaded into the draft.")}).catch(function(){toast("That file is not a menu.json.",true)})}}
+function persistSettings(){var s=Object.assign({},S);if(!S.remember){try{sessionStorage.setItem("pq-token",S.token)}catch(e){}s.token=""}LS.set("pq-settings",s)}
+
+/* ---------- publish ---------- */
+$("#publish").onclick=function(){if(!S.token){view="set";draw();$$("#nav button").forEach(function(x){x.classList.toggle("on",x.getAttribute("data-v")==="set")});toast("Add the access token first.",true);return}
+  var n=changes(),btn=this;btn.disabled=true;btn.textContent="Publishing…";
+  var head,baseTree;
+  gh("/contents/"+S.path+"?ref="+encodeURIComponent(S.branch)).then(function(j){if(liveSha&&j.sha!==liveSha)return ask("The menu changed somewhere else","Someone published from another device after you opened the panel. Publishing now replaces that version with your draft.","Publish anyway").then(function(y){if(!y)throw new Error("cancel")})})
+  .then(function(){return gh("/git/ref/heads/"+encodeURIComponent(S.branch))}).then(function(r){head=r.object.sha;return gh("/git/commits/"+head)}).then(function(c){baseTree=c.tree.sha;
+    var used={};draft.categories.forEach(function(c){c.items.forEach(function(i){if(i.photo){used[i.photo]=1;used[i.photo.replace("images/","images/thumb/")]=1}})});
+    draft.updated=new Date().toISOString();
+    var dir=S.path.indexOf("/")>-1?S.path.replace(/[^\/]+$/,""):"";var files=[{path:S.path,content:b64e(JSON.stringify(draft,null,1))}];for(var p in pending)if(used[p])files.push({path:dir+p,content:pending[p].split(",")[1]});
+    return Promise.all(files.map(function(f){return gh("/git/blobs",{method:"POST",body:{content:f.content,encoding:"base64"}}).then(function(b){return{path:f.path,mode:"100644",type:"blob",sha:b.sha}})}))})
+  .then(function(tree){return gh("/git/trees",{method:"POST",body:{base_tree:baseTree,tree:tree}})})
+  .then(function(t){return gh("/git/commits",{method:"POST",body:{message:"Menu update: "+n+" change"+(n>1?"s":"")+" ("+new Date().toLocaleDateString("en-US",{timeZone:"America/Chicago"})+")",tree:t.sha,parents:[head]}})})
+  .then(function(c){return gh("/git/refs/heads/"+encodeURIComponent(S.branch),{method:"PATCH",body:{sha:c.sha}})})
+  .then(function(){pending={};LS.set("pq-pending",{});return loadLive()}).then(function(){draft=clone(live);save();draw();toast("Published. The QR menu shows the new version in about a minute.")})
+  .catch(function(e){if(e.message!=="cancel")toast("Publish failed: "+e.message,true)})
+  .then(function(){btn.textContent="Publish to QR menu";markDirty()})};
+$("#discard").onclick=function(){if(!changes())return;ask("Discard the draft?","All unpublished changes are removed. The live QR menu stays as it is.","Discard").then(function(y){if(!y)return;draft=clone(live);pending={};save();draw()})};
+
+/* ---------- boot ---------- */
+loadLive().then(function(){var d=LS.get("pq-draft",null);draft=d&&d.categories?d:clone(live);markDirty();draw();sendPreview()});
+})();
+</script>
+</body>
+</html>
