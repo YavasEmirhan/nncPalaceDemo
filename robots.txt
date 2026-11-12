@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# This independent demo is intentionally excluded from search indexing.
