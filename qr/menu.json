@@ -1,0 +1,1166 @@
+{
+ "updated": "2026-11-12T00:00:00Z",
+ "restaurant": {
+  "name": "Palace Istanbul Kebab House",
+  "phone": "(708) 529-3924",
+  "phone_href": "tel:+17085293924",
+  "address": "7207 W 87th St, Bridgeview, IL 60455",
+  "open": "10:00",
+  "close": "23:30",
+  "timezone": "America/Chicago",
+  "directions": "https://www.google.com/maps/dir/?api=1&destination=Palace+Istanbul+Kebab+House,+7207+W+87th+St,+Bridgeview,+IL+60455",
+  "review": "",
+  "review_fallback": "https://www.google.com/maps/place/Palace+Istanbul+Kebab+House/@41.7331787,-87.8001075,17z",
+  "instagram": "https://www.instagram.com/palaceistanbul_kebabhouse/",
+  "website": "https://palaceistanbul.net",
+  "wifi": {
+   "name": "",
+   "password": ""
+  },
+  "note": "Prices may change. Please tell your server about any allergies."
+ },
+ "announcement": {
+  "active": false,
+  "text": "",
+  "start": "",
+  "end": ""
+ },
+ "categories": [
+  {
+   "id": "breakfast",
+   "title": "Breakfast",
+   "tr": "Kahvaltı",
+   "intro": "",
+   "hidden": false,
+   "items": [
+    {
+     "id": "turkish-special-breakfast",
+     "name": "Turkish Special Breakfast",
+     "tr": "Serpme Kahvaltı",
+     "desc": "The full Turkish spread for two, on the copper tray.",
+     "price": 70,
+     "unit": "for 2",
+     "tags": [
+      "For 2"
+     ],
+     "photo": "images/turkish-special-breakfast.webp",
+     "available": true,
+     "hidden": false,
+     "featured": true
+    },
+    {
+     "id": "breakfast-plate",
+     "name": "Breakfast Plate",
+     "tr": "Kahvaltı Tabağı",
+     "desc": "Mixed greens, cherry tomato, cucumber, feta, kashkaval cheese, olives, jam, honey, butter and fruit.",
+     "price": 18,
+     "unit": "",
+     "tags": [],
+     "photo": "images/breakfast-plate.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "menemen",
+     "name": "Menemen",
+     "tr": "",
+     "desc": "Traditional Turkish scrambled eggs with tomatoes and green peppers.",
+     "price": 10,
+     "unit": "",
+     "tags": [],
+     "photo": "images/menemen.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "eggs-with-sucuk",
+     "name": "Eggs with Sucuk",
+     "tr": "Sucuklu Yumurta",
+     "desc": "Three eggs with butter and sucuk.",
+     "price": 11,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "eggs-with-butter",
+     "name": "Eggs with Butter",
+     "tr": "Tereyağlı Yumurta",
+     "desc": "Three eggs with butter.",
+     "price": 10,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "eggs-with-pastirma",
+     "name": "Eggs with Pastırma",
+     "tr": "Pastırmalı Yumurta",
+     "desc": "Three eggs with butter and pastırma.",
+     "price": 12,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "cold-appetizers",
+   "title": "Cold Meze",
+   "tr": "Soğuk Mezeler",
+   "intro": "",
+   "hidden": false,
+   "items": [
+    {
+     "id": "spicy-vegetable-dip",
+     "name": "Spicy Vegetable Dip",
+     "tr": "Acılı Ezme",
+     "desc": "Fresh tomatoes, spicy green pepper, red pepper, parsley, walnut, onion, garlic, lemon juice and seasonal spices.",
+     "price": 8,
+     "unit": "",
+     "tags": [
+      "Vegan",
+      "Spicy"
+     ],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "hummus",
+     "name": "Hummus",
+     "tr": "",
+     "desc": "Pureed chickpeas blended with fresh garlic, tahini and fresh herbs.",
+     "price": 8,
+     "unit": "",
+     "tags": [
+      "Vegan"
+     ],
+     "photo": "images/hummus.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "baba-ghanoush",
+     "name": "Baba Ghanoush",
+     "tr": "Babagannuş",
+     "desc": "Mashed charcoal-grilled eggplant with yogurt, fresh garlic, olive oil, sesame paste and salt.",
+     "price": 8,
+     "unit": "",
+     "tags": [
+      "Vegetarian"
+     ],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "haydari",
+     "name": "Haydari",
+     "tr": "",
+     "desc": "Greek yogurt, mint, dill, garlic and olive oil.",
+     "price": 8,
+     "unit": "",
+     "tags": [
+      "Vegetarian"
+     ],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "pink-lady",
+     "name": "Pink Lady",
+     "tr": "",
+     "desc": "Roasted beets, Greek yogurt, walnuts, olive oil and garlic.",
+     "price": 8,
+     "unit": "",
+     "tags": [
+      "Vegetarian"
+     ],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "carrot-tarator",
+     "name": "Carrot Tarator",
+     "tr": "Havuç Tarator",
+     "desc": "Roasted carrots, Greek yogurt, garlic, olive oil and dill.",
+     "price": 8,
+     "unit": "",
+     "tags": [
+      "Vegetarian"
+     ],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "mixed-meze",
+     "name": "Mixed Meze",
+     "tr": "Karışık Meze",
+     "desc": "A sampler of our cold meze.",
+     "price": 15,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "stuffed-grape-leaves",
+     "name": "Stuffed Grape Leaves",
+     "tr": "Yaprak Sarma",
+     "desc": "Six pieces, served with yogurt.",
+     "price": 8,
+     "unit": "",
+     "tags": [
+      "Vegetarian"
+     ],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "cig-kofte",
+     "name": "Çiğ Köfte",
+     "tr": "",
+     "desc": "Eight pieces with lettuce, lemon and pomegranate molasses.",
+     "price": 10,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "cacik",
+     "name": "Cacık",
+     "tr": "",
+     "desc": "Finely chopped cucumber blended with garlic, yogurt and fresh mint.",
+     "price": 8,
+     "unit": "",
+     "tags": [
+      "Vegetarian"
+     ],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "hot-appetizers",
+   "title": "Hot Appetizers",
+   "tr": "Ara Sıcaklar",
+   "intro": "",
+   "hidden": false,
+   "items": [
+    {
+     "id": "cheese-rolls",
+     "name": "Cheese Rolls",
+     "tr": "Sigara Böreği",
+     "desc": "",
+     "price": 9,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "falafel-plate",
+     "name": "Falafel Plate",
+     "tr": "",
+     "desc": "",
+     "price": 10,
+     "unit": "",
+     "tags": [
+      "Vegan"
+     ],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "mozzarella-sticks",
+     "name": "Mozzarella Sticks",
+     "tr": "",
+     "desc": "",
+     "price": 8,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "chicken-nuggets",
+     "name": "Chicken Nuggets",
+     "tr": "",
+     "desc": "",
+     "price": 10,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "french-fries",
+     "name": "French Fries",
+     "tr": "",
+     "desc": "",
+     "price": 6,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "onion-rings",
+     "name": "Onion Rings",
+     "tr": "",
+     "desc": "",
+     "price": 9,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "soups",
+   "title": "Soups",
+   "tr": "Çorbalar",
+   "intro": "",
+   "hidden": false,
+   "items": [
+    {
+     "id": "lentil-soup",
+     "name": "Lentil Soup",
+     "tr": "Mercimek Çorbası",
+     "desc": "",
+     "price": 7,
+     "unit": "",
+     "tags": [
+      "Vegetarian"
+     ],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "lamb-soup",
+     "name": "Lamb Soup",
+     "tr": "Kelle Paça",
+     "desc": "",
+     "price": 13,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "salads",
+   "title": "Salads",
+   "tr": "Salatalar",
+   "intro": "Add on top: grilled salmon +$15 · chicken shish +$13 · beef shish +$13 · feta +$7",
+   "hidden": false,
+   "items": [
+    {
+     "id": "shepherd-salad",
+     "name": "Shepherd Salad",
+     "tr": "Çoban Salata",
+     "desc": "Finely chopped tomatoes, cucumbers, red onions, green and red peppers and parsley with lemon and olive oil.",
+     "price": 12,
+     "unit": "",
+     "tags": [
+      "Vegan"
+     ],
+     "photo": "images/shepherd-salad.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "caesar-salad",
+     "name": "Caesar Salad",
+     "tr": "",
+     "desc": "Caesar dressing, lettuce, croutons, parmesan and cherry tomatoes.",
+     "price": 9,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "seasonal-salad",
+     "name": "Seasonal Salad",
+     "tr": "Mevsim Salata",
+     "desc": "Grated carrots, red cabbage, lettuce, corn and cherry tomatoes.",
+     "price": 12,
+     "unit": "",
+     "tags": [],
+     "photo": "images/seasonal-salad.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "avocado-salad",
+     "name": "Avocado Salad",
+     "tr": "",
+     "desc": "Arugula, spinach, tomatoes, red onion, red peppers, walnuts, lemon, cherry tomatoes and avocado.",
+     "price": 13,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "palace-signature-salad",
+     "name": "Palace Signature Salad",
+     "tr": "",
+     "desc": "Spring mix, onion, tomatoes, cucumbers, feta, walnuts, pomegranate, cabbage, corn, red peppers, red onions and apricots.",
+     "price": 14,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "wraps",
+   "title": "Wraps",
+   "tr": "Dürümler",
+   "intro": "Add fries +$3",
+   "hidden": false,
+   "items": [
+    {
+     "id": "chicken-wrap",
+     "name": "Chicken Wrap",
+     "tr": "Tavuk Dürüm",
+     "desc": "Sliced chicken, lettuce, tomato, onions, pickle sauce and pickled peppers.",
+     "price": 12,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "doner-wrap",
+     "name": "Döner Wrap",
+     "tr": "Döner Dürüm",
+     "desc": "Beef döner, lettuce, tomatoes, onions, pickle sauce and pickled peppers.",
+     "price": 13,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "adana-wrap",
+     "name": "Adana Wrap",
+     "tr": "Adana Dürüm",
+     "desc": "One skewer of Adana kebab with our special salad and pickled peppers.",
+     "price": 15,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "kofte-wrap",
+     "name": "Köfte Wrap",
+     "tr": "Köfte Dürüm",
+     "desc": "Four pieces of köfte with special salad, sauce and pickled peppers.",
+     "price": 13,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "falafel-wrap",
+     "name": "Falafel Wrap",
+     "tr": "",
+     "desc": "Four pieces of falafel, hummus, lettuce, onions, tomatoes, tahini sauce and pickled peppers.",
+     "price": 11,
+     "unit": "",
+     "tags": [
+      "Vegetarian"
+     ],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "grill",
+   "title": "From the Grill",
+   "tr": "Izgaralar",
+   "intro": "Served with grilled tomato, pepper and rice.",
+   "hidden": false,
+   "items": [
+    {
+     "id": "adana-kebab",
+     "name": "Adana Kebab",
+     "tr": "",
+     "desc": "Two skewers of Adana kebab.",
+     "price": 25,
+     "unit": "",
+     "tags": [],
+     "photo": "images/adana-kebab.webp",
+     "available": true,
+     "hidden": false,
+     "featured": true
+    },
+    {
+     "id": "lamb-shish",
+     "name": "Lamb Shish",
+     "tr": "Kuzu Şiş",
+     "desc": "Six pieces of lamb.",
+     "price": 27,
+     "unit": "",
+     "tags": [],
+     "photo": "images/lamb-shish.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "lamb-chops",
+     "name": "Lamb Chops",
+     "tr": "Kuzu Pirzola",
+     "desc": "Four chops.",
+     "price": 33,
+     "unit": "",
+     "tags": [],
+     "photo": "images/lamb-chops.webp",
+     "available": true,
+     "hidden": false,
+     "featured": true
+    },
+    {
+     "id": "beef-shish",
+     "name": "Beef Shish",
+     "tr": "Dana Şiş",
+     "desc": "Six pieces of beef.",
+     "price": 26,
+     "unit": "",
+     "tags": [],
+     "photo": "images/beef-shish.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "chicken-shish",
+     "name": "Chicken Shish",
+     "tr": "Tavuk Şiş",
+     "desc": "Six pieces of chicken.",
+     "price": 22,
+     "unit": "",
+     "tags": [],
+     "photo": "images/chicken-shish.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "grilled-chicken-wings",
+     "name": "Grilled Chicken Wings",
+     "tr": "Tavuk Kanat",
+     "desc": "Six wings.",
+     "price": 24,
+     "unit": "",
+     "tags": [],
+     "photo": "images/grilled-chicken-wings.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "oven-salmon",
+     "name": "Oven Salmon",
+     "tr": "Fırın Somon",
+     "desc": "7 oz salmon with grilled tomato, pepper and vegetable salad.",
+     "price": 27,
+     "unit": "",
+     "tags": [],
+     "photo": "images/oven-salmon.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "inegol-kofte",
+     "name": "İnegöl Köfte",
+     "tr": "",
+     "desc": "Six İnegöl-style meatballs.",
+     "price": 25,
+     "unit": "",
+     "tags": [],
+     "photo": "images/inegol-kofte.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "doner-plate",
+     "name": "Döner Plate",
+     "tr": "Porsiyon Döner",
+     "desc": "Sliced beef döner.",
+     "price": 25,
+     "unit": "",
+     "tags": [],
+     "photo": "images/doner-plate.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "specials",
+   "title": "House Specials",
+   "tr": "Özel Yemekler",
+   "intro": "",
+   "hidden": false,
+   "items": [
+    {
+     "id": "iskender",
+     "name": "İskender",
+     "tr": "",
+     "desc": "Döner over bread with tomato sauce, yogurt and melted butter.",
+     "price": 26,
+     "unit": "",
+     "tags": [],
+     "photo": "images/iskender.webp",
+     "available": true,
+     "hidden": false,
+     "featured": true
+    },
+    {
+     "id": "beyti",
+     "name": "Beyti",
+     "tr": "",
+     "desc": "Adana skewer wrapped with cheese, tomato sauce, grilled tomato and pepper, finished with butter.",
+     "price": 27,
+     "unit": "",
+     "tags": [],
+     "photo": "images/beyti.webp",
+     "available": true,
+     "hidden": false,
+     "featured": true
+    },
+    {
+     "id": "chicken-ali-nazik",
+     "name": "Chicken Ali Nazik",
+     "tr": "Tavuklu Ali Nazik",
+     "desc": "Roasted eggplant, sautéed chicken, tomato sauce, grilled tomato and pepper.",
+     "price": 26,
+     "unit": "",
+     "tags": [],
+     "photo": "images/chicken-ali-nazik.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "lamb-ali-nazik",
+     "name": "Lamb Ali Nazik",
+     "tr": "Kuzulu Ali Nazik",
+     "desc": "Roasted eggplant, sautéed lamb, sauce, grilled tomato and pepper.",
+     "price": 28,
+     "unit": "",
+     "tags": [],
+     "photo": "images/lamb-ali-nazik.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "mix-grill",
+     "name": "Mix Grill",
+     "tr": "Karışık Izgara",
+     "desc": "Adana kebab, chicken shish, beef shish, chicken wing and meatball with salad and rice.",
+     "price": 35,
+     "unit": "",
+     "tags": [],
+     "photo": "images/mix-grill.webp",
+     "available": true,
+     "hidden": false,
+     "featured": true
+    },
+    {
+     "id": "beef-stew",
+     "name": "Beef Stew",
+     "tr": "Et Sote",
+     "desc": "Sautéed vegetables and beef tenderloin slices with rice.",
+     "price": 25,
+     "unit": "",
+     "tags": [],
+     "photo": "images/beef-stew.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "chicken-stew",
+     "name": "Chicken Stew",
+     "tr": "Tavuk Sote",
+     "desc": "Sautéed vegetables and chicken cubes with rice.",
+     "price": 23,
+     "unit": "",
+     "tags": [],
+     "photo": "images/chicken-stew.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "roasted-lamb",
+     "name": "Roasted Lamb",
+     "tr": "Kuzu Tandır",
+     "desc": "Roasted lamb with rice, grilled tomatoes and peppers.",
+     "price": 28,
+     "unit": "",
+     "tags": [],
+     "photo": "images/roasted-lamb.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "homemade-manti",
+     "name": "Homemade Mantı",
+     "tr": "Ev Mantısı",
+     "desc": "Turkish dumplings, made in house.",
+     "price": 19,
+     "unit": "",
+     "tags": [],
+     "photo": "images/homemade-manti.webp",
+     "available": true,
+     "hidden": false,
+     "featured": true
+    },
+    {
+     "id": "kofte",
+     "name": "Köfte",
+     "tr": "Izgara Köfte",
+     "desc": "Grilled tomato, green pepper, salad and rice.",
+     "price": 24,
+     "unit": "",
+     "tags": [],
+     "photo": "images/kofte.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "platters",
+   "title": "Family Platters",
+   "tr": "Karışık Tabaklar",
+   "intro": "Made for the whole table.",
+   "hidden": false,
+   "items": [
+    {
+     "id": "palace-plate",
+     "name": "Palace Plate",
+     "tr": "",
+     "desc": "Adana, beef döner, chicken shish, beef shish, chicken wings and meatballs with rice, roasted tomato and pepper.",
+     "price": 75,
+     "unit": "serves 2–3",
+     "tags": [
+      "Serves 2–3"
+     ],
+     "photo": "images/palace-plate.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "palace-family",
+     "name": "Palace Family",
+     "tr": "",
+     "desc": "Adana, beef döner, chicken shish, beef shish, lahmacun, chicken wings and meatballs with rice, fries, roasted tomato and pepper.",
+     "price": 155,
+     "unit": "serves 4–5",
+     "tags": [
+      "Serves 4–5"
+     ],
+     "photo": "images/palace-family.webp",
+     "available": true,
+     "hidden": false,
+     "featured": true
+    },
+    {
+     "id": "platter-per-person",
+     "name": "Platter, per person",
+     "tr": "",
+     "desc": "",
+     "price": 30,
+     "unit": "per person",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "flatbread",
+   "title": "Pide & Lahmacun",
+   "tr": "Pide ve Lahmacun",
+   "intro": "Add cheese +$3",
+   "hidden": false,
+   "items": [
+    {
+     "id": "lahmacun",
+     "name": "Lahmacun",
+     "tr": "",
+     "desc": "Thin, crisp flatbread with spiced minced meat.",
+     "price": 8,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "mixed-pide",
+     "name": "Mixed Pide",
+     "tr": "Karışık Pide",
+     "desc": "",
+     "price": 20,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "cheese-pide",
+     "name": "Cheese Pide",
+     "tr": "Kaşarlı Pide",
+     "desc": "",
+     "price": 16,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "diced-beef-pide",
+     "name": "Diced Beef Pide",
+     "tr": "Kuşbaşılı Pide",
+     "desc": "",
+     "price": 18,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "konya-style-meat-bread",
+     "name": "Konya-Style Meat Bread",
+     "tr": "Etli Ekmek",
+     "desc": "",
+     "price": 22,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "cheese-sucuk-pide",
+     "name": "Cheese & Sucuk Pide",
+     "tr": "Kaşarlı Sucuklu Pide",
+     "desc": "",
+     "price": 17,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "kids",
+   "title": "Kids",
+   "tr": "Çocuk Menüsü",
+   "intro": "",
+   "hidden": false,
+   "items": [
+    {
+     "id": "mac-and-cheese-bites",
+     "name": "Mac and Cheese Bites",
+     "tr": "",
+     "desc": "",
+     "price": 10,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "small-kofte",
+     "name": "Small Köfte",
+     "tr": "",
+     "desc": "",
+     "price": 15,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "small-adana-kebab",
+     "name": "Small Adana Kebab",
+     "tr": "",
+     "desc": "",
+     "price": 16,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "desserts",
+   "title": "Desserts",
+   "tr": "Tatlılar",
+   "intro": "Add ice cream +$4",
+   "hidden": false,
+   "items": [
+    {
+     "id": "kunefe",
+     "name": "Künefe",
+     "tr": "",
+     "desc": "Shredded pastry, melted cheese and syrup, served warm.",
+     "price": 10,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": true
+    },
+    {
+     "id": "baklava",
+     "name": "Baklava",
+     "tr": "",
+     "desc": "",
+     "price": 7,
+     "unit": "any 3 pieces",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "tulumba",
+     "name": "Tulumba",
+     "tr": "",
+     "desc": "",
+     "price": 7,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "carrot-slice-baklava",
+     "name": "Carrot Slice Baklava",
+     "tr": "Havuç Dilimi Baklava",
+     "desc": "",
+     "price": 8,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "rice-pudding",
+     "name": "Rice Pudding",
+     "tr": "Sütlaç",
+     "desc": "",
+     "price": 6,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  },
+  {
+   "id": "drinks",
+   "title": "Drinks",
+   "tr": "İçecekler",
+   "intro": "",
+   "hidden": false,
+   "items": [
+    {
+     "id": "turkish-tea",
+     "name": "Turkish Tea",
+     "tr": "Çay",
+     "desc": "Black tea in a tulip glass.",
+     "price": 2,
+     "unit": "",
+     "tags": [],
+     "photo": "images/turkish-tea.webp",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "turkish-coffee",
+     "name": "Turkish Coffee",
+     "tr": "Türk Kahvesi",
+     "desc": "",
+     "price": 5,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "homemade-lemonade",
+     "name": "Homemade Lemonade",
+     "tr": "Ev Yapımı Limonata",
+     "desc": "",
+     "price": 6,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "ayran-or-salgam",
+     "name": "Ayran or Şalgam",
+     "tr": "",
+     "desc": "Salted yogurt drink, or fermented purple-carrot juice.",
+     "price": 4,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "turkish-soft-drink",
+     "name": "Turkish Soft Drink",
+     "tr": "",
+     "desc": "",
+     "price": 3.5,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    },
+    {
+     "id": "can-soft-drink",
+     "name": "Can Soft Drink",
+     "tr": "",
+     "desc": "",
+     "price": 3,
+     "unit": "",
+     "tags": [],
+     "photo": "",
+     "available": true,
+     "hidden": false,
+     "featured": false
+    }
+   ]
+  }
+ ]
+}
